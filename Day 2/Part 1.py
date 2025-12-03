@@ -16,11 +16,11 @@ def FindInvalid(IDNum):
     if First == Second:
         Output += IDNum
         #print('invalid')
-    else:
-        print('valid')
+    #else:
+        #print('valid')
 
 for x in Input:
-    #print('serching range', x)
+    print('serching range', x)
     Range = x.split('-')
     Low = int(Range[0])
     High = int(Range[1])
