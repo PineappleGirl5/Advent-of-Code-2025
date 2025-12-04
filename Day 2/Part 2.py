@@ -40,9 +40,6 @@ def IsInvalid(IDNum):
     if Match:
         return(True)
     
-    if (len(Pattern)%2 == 1): #returns valid if there are an odd number of pattern sections
-        return(False)
-    
     while (len(Pattern)>2 and len(Pattern)%2 == 0): #combines every 2 items in the list to check if the pattern repeats in larger sections
         Combo = []
         for x in range(1, len(Pattern), 2):
@@ -52,9 +49,8 @@ def IsInvalid(IDNum):
         print(Pattern)
         Match = True
         for x in range(1, len(Pattern)): #returns invalid if all sections of the pattern match
-            print(len(Pattern))
-            print(Pattern[x])
-            print(Pattern[x-1])
+            #print(Pattern[x])
+            #print(Pattern[x-1])
             if Pattern[x] != Pattern[x-1]:
                 Match = False
         if Match:
