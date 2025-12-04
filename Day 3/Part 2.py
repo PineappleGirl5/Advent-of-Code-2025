@@ -15,7 +15,7 @@ def FindMax(bank):
     output = highestNum[11]
     for x in reversed(range(11)):  #adds the numbers together with the final output
         output = output + highestNum[x]
-    print(highestNum)
+    #print(highestNum)
     print(output)
     totalOutput += int(output)
 
