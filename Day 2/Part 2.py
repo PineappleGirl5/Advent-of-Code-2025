@@ -5,7 +5,7 @@ Input = (file.read()).split(',')
 file.close()
 
 def IsInvalid(IDNum):
-    #print('checking ID#', IDNum)
+    print('checking ID#', IDNum)
     IDstr = str(IDNum)
     numbers = dict()
     for x in IDstr:
@@ -31,7 +31,7 @@ def IsInvalid(IDNum):
     for x in range(0, LowestNum):
         SplitSection = (SplitSize*x)
         Pattern.append(IDstr[SplitSection:(SplitSection+SplitSize)])
-    #print(Pattern)
+    print(Pattern)
 
     Match = True
     for x in range(1, len(Pattern)): #returns invalid if all sections of the pattern match
@@ -43,22 +43,22 @@ def IsInvalid(IDNum):
     if (len(Pattern)%2 == 1): #returns valid if there are an odd number of pattern sections
         return(False)
     
-    while (len(Pattern)>2): #combines every 2 items in the list to check if the pattern repeats in larger sections
+    while (len(Pattern)>2 and len(Pattern)%2 == 0): #combines every 2 items in the list to check if the pattern repeats in larger sections
         Combo = []
         for x in range(1, len(Pattern), 2):
             Combo.append(Pattern[x-1]+Pattern[x])
         Pattern.clear()
         Pattern.extend(Combo)
-        #print(Pattern)
+        print(Pattern)
         Match = True
         for x in range(1, len(Pattern)): #returns invalid if all sections of the pattern match
+            print(len(Pattern))
+            print(Pattern[x])
+            print(Pattern[x-1])
             if Pattern[x] != Pattern[x-1]:
                 Match = False
-            if Match:
-                return(True)
-
-
-
+        if Match:
+            return(True)
 
 
 for x in Input: #seperates the range into the high and low numbers and iterates through
@@ -69,8 +69,8 @@ for x in Input: #seperates the range into the high and low numbers and iterates 
     for x in range(Low, High+1):
         if IsInvalid(x):
             Output += x
-            #print('invalid')
-        #else:
-            #print('valid')
+            print('invalid')
+        else:
+            print('valid')
 
 print('output is', Output)
