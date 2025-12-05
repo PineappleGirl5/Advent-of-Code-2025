@@ -25,7 +25,7 @@ def IsInvalid(IDNum):
     elif LowestNum == len(IDstr): #returns invalid if the entire sequence is comprised of the same digit repeating
         return(True)
     
-    if len(IDstr)%LowestNum != 0:
+    if len(IDstr)%LowestNum != 0: #returns valid if the sequence can not be cleanly devided by the lowest frequency of a number
         return(False)
     
     Pattern = []
