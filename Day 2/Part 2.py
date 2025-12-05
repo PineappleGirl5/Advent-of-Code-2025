@@ -5,7 +5,7 @@ Input = (file.read()).split(',')
 file.close()
 
 def IsInvalid(IDNum):
-    print('checking ID#', IDNum)
+    #print('checking ID#', IDNum)
     IDstr = str(IDNum)
     numbers = dict()
     for x in IDstr:
@@ -25,13 +25,16 @@ def IsInvalid(IDNum):
     elif LowestNum == len(IDstr): #returns invalid if the entire sequence is comprised of the same digit repeating
         return(True)
     
+    if len(IDstr)%LowestNum != 0:
+        return(False)
+    
     Pattern = []
     SplitSize = len(IDstr)//LowestNum #splits the sequense into sections based off of the lowest frequency number
     #print('spliting into sections', SplitSize, 'numerals long')
     for x in range(0, LowestNum):
         SplitSection = (SplitSize*x)
         Pattern.append(IDstr[SplitSection:(SplitSection+SplitSize)])
-    print(Pattern)
+    #print(Pattern)
 
     Match = True
     for x in range(1, len(Pattern)): #returns invalid if all sections of the pattern match
@@ -46,7 +49,7 @@ def IsInvalid(IDNum):
             Combo.append(Pattern[x-1]+Pattern[x])
         Pattern.clear()
         Pattern.extend(Combo)
-        print(Pattern)
+        #print(Pattern)
         Match = True
         for x in range(1, len(Pattern)): #returns invalid if all sections of the pattern match
             #print(Pattern[x])
@@ -65,8 +68,8 @@ for x in Input: #seperates the range into the high and low numbers and iterates 
     for x in range(Low, High+1):
         if IsInvalid(x):
             Output += x
-            print('invalid')
-        else:
-            print('valid')
+            #print('invalid')
+        #else:
+            #print('valid')
 
 print('output is', Output)
