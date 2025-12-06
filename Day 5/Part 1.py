@@ -6,21 +6,20 @@ file = open('AoC 2025\Day 5\Input.txt', 'r') #creates a list of fresh ranges and
 for line in file:
     number = line.strip()
     if number.isdigit():
-        ingredientID.append(number)
+        ingredientID.append(int(number))
     elif number.count('-') == 1:
         freshRange.append(number)
 file.close()
 
-def isFresh(IDnum):
+def isFresh(IDnum): #iterates through list of ranges and checks if ID is inbetween any of them
     for x in freshRange:
         split = x.split("-")
-        #print(split)
-        if IDnum >= split[0] and IDnum <= split[1]:
+        if IDnum >= int(split[0]) and IDnum <= int(split[1]):
             print(x)
             return(True)
     return(False)
 
-for x in ingredientID:
+for x in ingredientID: #iterates through list of IDs
     print('checking ID', x)
     if isFresh(x):
         print('fresh')
