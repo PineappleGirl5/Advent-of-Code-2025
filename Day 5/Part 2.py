@@ -15,7 +15,6 @@ for line in file:
 file.close()
 freshList.sort() #sorts the keys so only neighboring ranges need to be checked for overlap
 
-overlaps = False
 print('checking overlaps,', len(freshList), 'individual ranges found') #iterates through every range and checks if it overlaps with the range before it
 for x in range(1, len(freshList)):
     if freshRange[freshList[x-1]] >= freshList[x]: 
@@ -24,6 +23,7 @@ for x in range(1, len(freshList)):
         freshList.pop(x)
         freshList.insert(x, freshList[x-1]) #replaces the higher overlapping key with the lower so the updated range can be compared in the next loop 
 freshList = list(set(freshList)) # removes duplicates
+
 print('overlaps merged', len(freshList), 'individual ranges remaining')
 for x in freshList:
     amountFresh += freshRange[x] - x + 1 # adds the amount of numbers in all the ranges together
