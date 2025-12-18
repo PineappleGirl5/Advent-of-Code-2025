@@ -39,7 +39,6 @@ def isReachable(row, column):
     else:
         return(False)
 
-
 for x in range(len(paperRows)): #iterates through each column in each row
     print('searching row', x, paperRows[x])
     for i in range(len(paperRows[x])):
